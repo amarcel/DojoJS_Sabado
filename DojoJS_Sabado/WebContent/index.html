@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script	src="https://code.jquery.com/jquery-2.2.4.js"
+			  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+			  crossorigin="anonymous"></script>
+<script>
+// Decclaração de variaveis
+var n1, n2, media;
+function pegar_nota(id){
+	var n = $("#"+id).val();
+	n = parseFloat(n);
+	return n;
+}
+function imprimir_texto(texto,klasse){
+	$("#resultado").text(texto).removeClass().addClass(klasse);
+}
+function verificar_notas(){
+	// pegar valor
+	n1 = pegar_nota("nota1");
+	n2 = pegar_nota("nota2");
+	
+	media=(n1+n2)/2;
+	//verificação	
+	
+	if (media >= 7) {
+		imprimir_texto("Aluno Aprovado com Média: "+media,"azul");
+	} else if (media >= 4 && media < 7) {
+		imprimir_texto("Aluno Prova Final com Média: "+media,"verde");		
+	} else {
+		imprimir_texto("Aluno Reprovado com Média: "+media,"vermelho");		
+	}
+}
+</script>
+<style>
+	.vermelho {
+		color: red;
+	}
+	.verde {
+		color: green;
+	}
+	.azul {
+		color: blue;
+	}
+</style>
+</head>
+<body>
+<h2 class="vermelho">SIMULAÇÃO DE NOTAS</h2>
+<p style="color: purple">Informe a Nota da 1ª NI:</p>
+<input type= "text" id="nota1" />
+<br/>
+<p>Informe a Nota da 2ª NI:</p>
+<input type= "text" id="nota2" />
+<br/>
+<br/>
+<input type= "button" value= "Verificar" id="btnverificar" onclick="verificar_notas()"/>
+<p id="resultado"></p>
+
+
+
+
+
+
+</body>
+</html>
